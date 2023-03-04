@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sample page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!--css-->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div>
+        <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
+            <div class="mb-2 sm:mb-0">
+                <a href="/practica11" class="text-2xl no-underline text-grey-darkest hover:text-blue-dark">Home</a>
+            </div>
+            <div>
+                <a id="register" href="/practica11/registro.html" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Register</a>
+                <a id="login" href="/practica11/login.html" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Login</a>
+                <button id="logout" onclick="logout()" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Logout</button>
+                <a id="hipotecas" href="/practica11/hipotecas.html" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Mis presupuestos</a>
+                <p id="persona"></p>
+            </div>
+        </nav>
+    </div>
+    <h5 class="text-2xl bold">Calculadora de prestamos</h5>
+    <div class="max-w-16 flex flex-col border border-black rounded-lg justify-center">
+        <label for="capital">Capital</label>
+        <input type="number" id="capital" class="border-2 border-gray-300 p-2 rounded-lg m-2">
+        <label for="interes">Interes</label>
+        <input type="number" id="interes" class="border-2 border-gray-300 p-2 rounded-lg m-2">
+        <label for="meses">Meses</label>
+        <input type="number" id="meses" class="border-2 border-gray-300 p-2 rounded-lg m-2">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="generarCalculo()">Calculo</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="generarTabla()">Tabla</button>
+    </div>
+    <br>
+    <div id="print"></div>
+    <div id="table"></div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
