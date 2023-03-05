@@ -11,24 +11,30 @@
 </head>
 
 <body>
-    <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
-        <div class="mb-2 sm:mb-0">
-            <a href="/practica11" class="text-2xl no-underline text-grey-darkest hover:text-blue-dark">Home</a>
+    <div>
+        <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
+            <div class="mb-2 sm:mb-0">
+                <a href="/practica11" class="text-2xl no-underline text-grey-darkest hover:text-blue-dark">Home</a>
+            </div>
+            <div>
+                <a id="register" href="/practica11/registro.html" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Register</a>
+                <a id="login" href="/practica11/login.html" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Login</a>
+                <button id="logout" onclick="logout()" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Logout</button>
+                <a id="hipotecas" href="/practica11/hipotecas.html" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Mis presupuestos</a>
+                <a id="persona"></a>
+            </div>
+        </nav>
+    </div>
+    <div class="flex justify-center mt-4">
+        <div class="max-w-sm flex flex-col border border-black p-4 rounded-lg justify-center">
+            <h5 class="text-2xl bold">Log In</h5>
+            <label for="nombre">Username</label>
+            <input class="border-2 border-gray-300 p-2 rounded-lg m-2" type="text" name="nombre" id="username" required>
+            <label for="password">Password</label>
+            <input class="border-2 border-gray-300 p-2 rounded-lg m-2" type="password" name="password" id="password" required>
+            <button class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="login()">Login</button>
         </div>
-        <div>
-            <a id="register" href="/practica11/registro.html" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Register</a>
-            <a id="login" href="/practica11/login.html" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Login</a>
-            <button id="logout" onclick="logout()" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Logout</button>
-            <a id="hipotecas" href="/practica11/hipotecas.html" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Mis presupuestos</a>
-            <p id="persona"></p>
-        </div>
-    </nav>
-    <h1>Login</h1>
-    <label for="nombre">Username</label>
-    <input type="text" name="nombre" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <button onclick="login()">Login</button>
+    </div>
 </body>
 <script type="text/javascript" src="js/main.js"></script>
 

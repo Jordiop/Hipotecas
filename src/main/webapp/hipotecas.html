@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Sample page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis presupuestos</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!--css-->
-    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -24,25 +24,7 @@
             </div>
         </nav>
     </div>
-    <div class="flex justify-center mt-4">
-        <div class="max-w-sm flex flex-col border border-black p-4 rounded-lg justify-center">
-            <h5 class="text-2xl bold">Calculadora de prestamos</h5>
-            <label for="capital">Capital</label>
-            <input type="number" id="capital" class="border-2 border-gray-300 p-2 rounded-lg m-2">
-            <label for="interes">Interes</label>
-            <input type="number" id="interes" class="border-2 border-gray-300 p-2 rounded-lg m-2">
-            <label for="meses">Meses</label>
-            <input type="number" id="meses" class="border-2 border-gray-300 p-2 rounded-lg m-2">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="generarCalculo()">Calculo</button>
-            <button class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="generarTabla()">Tabla</button>
-        </div>
-    </div>
-    <br>
-    <div class="flex justify-center mt-4">
-        <div id="print"></div>
-        <br>
-        <div id="table"></div>
-    </div>
+    <div id="cargarHipotecas"></div>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 

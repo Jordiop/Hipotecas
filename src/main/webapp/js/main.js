@@ -4,6 +4,10 @@
 
 var url = "http://localhost:8080/practica11";
 
+if (sessionStorage.getItem("username") != null) {
+    onload = cargarPrestamos();
+}
+
 function checkUser() {
     if (sessionStorage.getItem("username") == null) {
         document.getElementById("login").style.visibility = "visible";
@@ -116,6 +120,18 @@ function guardarPrestamo() {
         "&&capital=" + document.getElementById("capital").value +
         "&&meses=" + document.getElementById("meses").value +
         "&&username=" + sessionStorage.getItem("username"));
+}
+
+function cargarPrestamos() {
+    let http = new XMLHttpRequest;
+    http.onreadystatechange = function() {
+        if (http.readyState == 4 && http.status == 200) {
+            document.getElementById("cargarHipotecas").innerHTML = http.responseText;
+        }
+    }
+    http.open("POST", "CargarPrestamos", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send("username=" + sessionStorage.getItem("username"));
 }
 
 checkUser();

@@ -52,7 +52,7 @@ public class CalculoTabla extends HttpServlet {
 				double i = ((interes/100) / 12);
 		        double cuota_mensual = capital / ((1-Math.pow((1+i),-meses))/i);
 			    // Montamos la tabla de HTML desde JAVA
-			    resultat = "<table border=\"1\">"
+			    resultat = "<table class=\"text-center border-separate border-spacing-2 border border-slate-500\" border=\"1\">"
 						+ "<tr>"
 						+ "<th>Capital pendiente anterior</th>"
 						+ "<th>Cuota a pagar</th>"

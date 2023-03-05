@@ -12,6 +12,19 @@ import java.sql.Statement;
  */
 
 public class Bbdd {
+	public static int obtenerId(String username) throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection("jdbc:mysql://192.168.1.25:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
+		Statement st = con.createStatement();
+		String query = "SELECT id FROM users WHERE username = '"+username+"'";
+		int id = -1;
+		ResultSet rs = st.executeQuery(query);
+		while (rs.next()) { 
+			id = rs.getInt("id");
+		};
+		return id;
+	}
+	
 	public static void registroDB(String username, String password) throws ClassNotFoundException, SQLException {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -57,16 +70,34 @@ public class Bbdd {
 		con.close();
 	}
 	
-	public static int obtenerId(String username) throws ClassNotFoundException, SQLException {
+	
+	
+	public static String mostrarPresupuestos(String username) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://192.168.1.25:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
+		String url = "jdbc:mysql://192.168.1.25:3306/practica11";
+		Connection con = DriverManager.getConnection(url, "daw", "password");
 		Statement st = con.createStatement();
-		String query = "SELECT id FROM users WHERE username = '"+username+"'";
-		int id = -1;
+		int identifier = obtenerId(username);
+		String query = "SELECT `id`, `interes`, `meses`, `capital` FROM `hipotecas` WHERE `user_id` = '"+identifier+"'";
 		ResultSet rs = st.executeQuery(query);
-		while (rs.next()) { 
-			id = rs.getInt("id");
-		};
-		return id;
+		String resultat = "<table border=\"1\">"
+				+ "<tr>"
+				+ "<th>id</th>"
+				+ "<th>Capital</th>"
+				+ "<th>Meses</th>"
+				+ "<th>Interes</th>"
+				+ "</tr>";
+		while (rs.next()) {
+			resultat = resultat 
+					+"<tr>"
+					+ "<td>" + rs.getString("id")+"</td>"
+					+ "<td>" + rs.getString("capital")+"</td>"
+					+ "<td>" + rs.getString("meses")+"</td>"
+					+ "<td>" + rs.getString("interes")+"</td>"
+					+ "</tr>";
+		}
+		resultat = resultat +"</table>";
+		return resultat;
+	
 	}
 }
