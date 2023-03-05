@@ -38,6 +38,7 @@ public class Calcular extends HttpServlet {
 		// TODO Auto-generated method stub
 		String resultat = "";
 		try {
+			// Recollim es paràmetres
 			String meses_req = request.getParameter("meses");
 			String interes_req = request.getParameter("interes");
 			String capital_req = request.getParameter("capital");
@@ -52,6 +53,7 @@ public class Calcular extends HttpServlet {
 			    Registros.registros(meses+" "+interes+" "+capital);
 			}
 		} catch (Exception e) {
+			// Mostram el resulat tant com a tornada per JS com al arxiu
 			resultat = "Error ejecutando";
 			GestionErrores.escribirErrores(e.toString());
 		}

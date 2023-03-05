@@ -76,6 +76,7 @@ public class CalculoTabla extends HttpServlet {
 			    		
 			}
 		} catch (Exception e) {
+			// Mostram el resulat tant com a tornada per JS com al arxiu
 			resultat = "Error ejecutando";
 			GestionErrores.escribirErrores(e.toString());
 		}

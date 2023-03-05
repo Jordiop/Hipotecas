@@ -42,6 +42,7 @@ public class Registrar extends HttpServlet {
 			Bbdd.registroDB(username, password);
 			resultat = "Usuario registrado correctamente";
 		} catch (Exception e) {
+			// Mostram el resulat tant com a tornada per JS com al arxiu
 			resultat = e.toString();
 			GestionErrores.escribirErrores(e.toString());
 		}

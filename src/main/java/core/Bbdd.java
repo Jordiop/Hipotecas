@@ -14,6 +14,7 @@ import java.text.DecimalFormat;
  */
 
 public class Bbdd {
+	// Tots els mètodes empren la mateixa connexió a la db, allojada a un servidor local propi (192.168.1.25) amb la base de dades practica11
 	public static int obtenerId(String username) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://192.168.1.25:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
