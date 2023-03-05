@@ -39,3 +39,21 @@ En este caso, se ha usado la configuración por defecto de tomcat, por lo que no
 ```
 La práctica está realizada con un servidor externo de la red local de mi casa. En la entrega, todas las URL apuntan a localhost.
 ```
+
+## Screenshots
+
+### Inicio
+![imagen](https://user-images.githubusercontent.com/95173613/222990102-e2329c14-ed91-4a18-b755-4efb978fc434.png)
+
+### Presupuesto tabla
+![imagen](https://user-images.githubusercontent.com/95173613/222990114-3ba83997-8218-41f8-812f-6f7154ef01f7.png)
+
+### Log In
+![imagen](https://user-images.githubusercontent.com/95173613/222990087-7571524f-2673-4aca-8bac-3bc02807705f.png)
+
+### Mis presupuestos
+![imagen](https://user-images.githubusercontent.com/95173613/222990131-4381f220-a3b9-47a5-8c72-9b14c02b129d.png)
+
+### Regenerar presupuestos
+![imagen](https://user-images.githubusercontent.com/95173613/222990139-8c295354-f63b-4f61-be1f-d23a77fd740d.png)
+
