@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class GuardarPrestamo
  */
-@WebServlet("/GuardarPrestamo")
+@WebServlet("/guardarprestamo")
 public class GuardarPrestamo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

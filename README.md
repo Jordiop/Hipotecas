@@ -7,7 +7,7 @@ Crear una aplicación web que permita el cálculo de hipotecas de tipo fijo. La 
 Se ha hecho uso de las siguientes tecnologías:
 * Visual Studio Code
 * Eclipse for Web Developers
-* Apache Tomcat 10.0.27
+* Apache Tomcat 9.0.65
 * MySQL 8.0.26
 * Java 11
 

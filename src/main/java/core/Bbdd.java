@@ -14,10 +14,13 @@ import java.text.DecimalFormat;
  */
 
 public class Bbdd {
+	static String url = "localhost";
+	static String userDB = "daw";
+	static String passwordDB = "password";
 	// Tots els mètodes empren la mateixa connexió a la db, allojada a un servidor local propi (192.168.1.25) amb la base de dades practica11
 	public static int obtenerId(String username) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
+		Connection con = DriverManager.getConnection("jdbc:mysql://"+url+":3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , userDB, passwordDB);
 		Statement st = con.createStatement();
 		String query = "SELECT id FROM users WHERE username = '"+username+"'";
 		int id = -1;
@@ -31,7 +34,7 @@ public class Bbdd {
 	public static void registroDB(String username, String password) throws ClassNotFoundException, SQLException, IOException {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
+			Connection con = DriverManager.getConnection("jdbc:mysql://"+url+":3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , userDB, passwordDB);
 			Statement st = con.createStatement();
 			String query = "INSERT INTO `users`(`username`, `password`) VALUES ('"+username+"', '"+password+"')";
 			st.executeUpdate(query);
@@ -46,7 +49,7 @@ public class Bbdd {
 		String resultat = "";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
+			Connection con = DriverManager.getConnection("jdbc:mysql://"+url+":3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , userDB, passwordDB);
 			Statement st = con.createStatement();
 			String query = "SELECT username FROM users WHERE username = '"+username+"' AND password = '"+password+"'";
 			ResultSet rs = st.executeQuery(query);
@@ -65,7 +68,7 @@ public class Bbdd {
 	public static void guardarPrestamo(double interes, double meses, double capital, String username) throws ClassNotFoundException, SQLException {
 		int identifier = obtenerId(username);
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
+		Connection con = DriverManager.getConnection("jdbc:mysql://"+url+":3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , userDB, passwordDB);
 		Statement st = con.createStatement();
 		String query = "INSERT INTO `hipotecas` (`user_id`, `interes`, `capital`, `meses`) VALUES ('"+identifier+"','"+interes+"','"+capital+"','"+meses+"')";
 		st.execute(query);
@@ -75,8 +78,7 @@ public class Bbdd {
 	
 	public static String mostrarPresupuestos(String username) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-		String url = "jdbc:mysql://localhost:3306/practica11";
-		Connection con = DriverManager.getConnection(url, "daw", "password");
+		Connection con = DriverManager.getConnection("jdbc:mysql://"+url+":3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , userDB, passwordDB);
 		Statement st = con.createStatement();
 		int identifier = obtenerId(username);
 		String query = "SELECT `id`, `interes`, `meses`, `capital` FROM `hipotecas` WHERE `user_id` = '"+identifier+"'";
@@ -106,8 +108,7 @@ public class Bbdd {
 	public static String buscarPresupuestoID(int id) throws SQLException, ClassNotFoundException {
 		String resultat = "";
 		Class.forName("com.mysql.jdbc.Driver");
-		String url = "jdbc:mysql://localhost:3306/practica11";
-		Connection con = DriverManager.getConnection(url, "daw", "password");
+		Connection con = DriverManager.getConnection("jdbc:mysql://"+url+":3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , userDB, passwordDB);
 		Statement st = con.createStatement();
 		String query = "SELECT `interes`, `meses`, `capital` FROM `hipotecas` WHERE `id` = '"+id+"'";
 		ResultSet rs = st.executeQuery(query);

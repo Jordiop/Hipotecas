@@ -35,7 +35,7 @@ function generarCalculo() {
             }
         }
     }
-    http.open("POST", "Calcular", true);
+    http.open("POST", "calcular", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("interes=" + document.getElementById("interes").value +
         "&&capital=" + document.getElementById("capital").value +
@@ -54,7 +54,7 @@ function generarTabla() {
             }
         }
     }
-    http.open("POST", "CalculoTabla", true);
+    http.open("POST", "calculotabla", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("interes=" + document.getElementById("interes").value +
         "&&capital=" + document.getElementById("capital").value +
@@ -73,7 +73,7 @@ function registrar() {
                 alert(http.responseText);
             }
         }
-        http.open("POST", "Registrar", true);
+        http.open("POST", "registrar", true);
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.send("username=" + document.getElementById("username").value +
             "&&password=" + document.getElementById("password").value);
@@ -95,7 +95,7 @@ function login() {
             }
         }
     }
-    http.open("POST", "Login", true);
+    http.open("POST", "login", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("username=" + document.getElementById("username").value +
         "&&password=" + document.getElementById("password").value);
@@ -114,7 +114,7 @@ function guardarPrestamo() {
             alert("Presupuesto guardado");
         }
     }
-    http.open("POST", "GuardarPrestamo", true);
+    http.open("POST", "guardarprestamo", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("interes=" + document.getElementById("interes").value +
         "&&capital=" + document.getElementById("capital").value +
@@ -129,7 +129,7 @@ function cargarPrestamos() {
             document.getElementById("cargarHipotecas").innerHTML = http.responseText;
         }
     }
-    http.open("POST", "CargarPrestamos", true);
+    http.open("POST", "cargarprestamos", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("username=" + sessionStorage.getItem("username"));
 }
@@ -141,7 +141,7 @@ function cargarPresupuestoID(numero) {
             document.getElementById("imprimirHipoteca").innerHTML = http.responseText;
         }
     }
-    http.open("POST", "CargarPrestamoID", true);
+    http.open("POST", "cargarprestamoid", true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send("id=" + numero);
 }
