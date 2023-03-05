@@ -43,6 +43,7 @@ public class Registrar extends HttpServlet {
 			resultat = "Usuario registrado correctamente";
 		} catch (Exception e) {
 			resultat = e.toString();
+			GestionErrores.escribirErrores(e.toString());
 		}
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().append(resultat);

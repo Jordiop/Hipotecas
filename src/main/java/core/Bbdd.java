@@ -1,5 +1,6 @@
 package core;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -26,7 +27,7 @@ public class Bbdd {
 		return id;
 	}
 	
-	public static void registroDB(String username, String password) throws ClassNotFoundException, SQLException {
+	public static void registroDB(String username, String password) throws ClassNotFoundException, SQLException, IOException {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://192.168.1.25:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
@@ -36,11 +37,11 @@ public class Bbdd {
 			st.close();
 			con.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			GestionErrores.escribirErrores(e.toString());
 		}
 	}
 	
-	public static String loginDB(String username, String password) {
+	public static String loginDB(String username, String password) throws IOException {
 		String resultat = "";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -55,7 +56,7 @@ public class Bbdd {
 			st.close();
 			con.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			GestionErrores.escribirErrores(e.toString());
 		}
 		return resultat;
 	}

@@ -52,6 +52,7 @@ public class Calcular extends HttpServlet {
 			}
 		} catch (Exception e) {
 			resultat = "Error ejecutando";
+			GestionErrores.escribirErrores(e.toString());
 		}
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().append(resultat);
