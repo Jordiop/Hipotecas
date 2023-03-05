@@ -1,6 +1,8 @@
 package core;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +38,20 @@ public class GuardarPrestamo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String username = request.getParameter("username");
+		String meses_req = request.getParameter("meses");
+		String interes_req = request.getParameter("interes");
+		String capital_req = request.getParameter("capital");
+		double meses = Double.parseDouble(meses_req);
+		double interes = Double.parseDouble(interes_req);
+		double capital = Double.parseDouble(capital_req);
+		if (meses > 0 && interes > 0 && capital > 0) {
+			try {
+				Bbdd.guardarPrestamo(interes, meses, capital, username);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		
 	}

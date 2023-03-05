@@ -26,7 +26,9 @@ function generarCalculo() {
     http.onreadystatechange = function() {
         if (http.readyState == 4 && http.status == 200) {
             document.getElementById("print").innerHTML = http.responseText;
-            document.getElementById("print").innerHTML += "<br><button onclick='guardarPrestamo()'>Guardar</button>";
+            if (sessionStorage.getItem("username") != null) {
+                document.getElementById("print").innerHTML += "<br><button onclick='guardarPrestamo()'>Guardar</button>";
+            }
         }
     }
     http.open("POST", "Calcular", true);
@@ -43,7 +45,9 @@ function generarTabla() {
     http.onreadystatechange = function() {
         if (http.readyState == 4 && http.status == 200) {
             document.getElementById("print").innerHTML = http.responseText;
-            document.getElementById("print").innerHTML += "<br><button onclick='guardarPrestamo()'>Guardar</button>";
+            if (sessionStorage.getItem("username") != null) {
+                document.getElementById("print").innerHTML += "<br><button onclick='guardarPrestamo()'>Guardar</button>";
+            }
         }
     }
     http.open("POST", "CalculoTabla", true);
@@ -95,6 +99,8 @@ function login() {
 
 function logout() {
     sessionStorage.removeItem("username");
+    // Recargamos la pagina
+    location.reload();
 }
 
 function guardarPrestamo() {

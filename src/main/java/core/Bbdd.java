@@ -25,6 +25,7 @@ public class Bbdd {
 			System.out.println(e);
 		}
 	}
+	
 	public static String loginDB(String username, String password) {
 		String resultat = "";
 		try {
@@ -44,21 +45,28 @@ public class Bbdd {
 		}
 		return resultat;
 	}
-	public static void guardarPrestamo(double interes, double meses, double capital, String username) {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://192.168.1.25:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
-			Statement st = con.createStatement();
-			String query = "SELECT id FROM users WHERE username = '"+username+"'";
-			int id = -1;
-			ResultSet rs = st.executeQuery(query);
-			while (rs.next()) { 
-				id = rs.getInt("id");
-			};
-			
-			String query2 = "INSERT INTO `hipotecas` (`user_id`, `interes`, `capital` ,`meses`) VALUES ('"+id+"','"+interes+"','"+capital+"','"+meses+"')";
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+	
+	public static void guardarPrestamo(double interes, double meses, double capital, String username) throws ClassNotFoundException, SQLException {
+		int identifier = obtenerId(username);
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection("jdbc:mysql://192.168.1.25:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
+		Statement st = con.createStatement();
+		String query = "INSERT INTO `hipotecas` (`user_id`, `interes`, `capital`, `meses`) VALUES ('"+identifier+"','"+interes+"','"+capital+"','"+meses+"')";
+		st.execute(query);
+		st.close();
+		con.close();
+	}
+	
+	public static int obtenerId(String username) throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection("jdbc:mysql://192.168.1.25:3306/practica11?useSSL=false&allowPublicKeyRetrieval=true" , "daw", "password");
+		Statement st = con.createStatement();
+		String query = "SELECT id FROM users WHERE username = '"+username+"'";
+		int id = -1;
+		ResultSet rs = st.executeQuery(query);
+		while (rs.next()) { 
+			id = rs.getInt("id");
+		};
+		return id;
 	}
 }
