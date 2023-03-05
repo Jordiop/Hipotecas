@@ -49,6 +49,7 @@ public class CalculoTabla extends HttpServlet {
 			double capital = Double.parseDouble(capital_req);
 			// Comprovam que cap dels 3 paràmetres sigui 0
 			if (meses > 0 && interes > 0 && capital > 0) {
+				Registros.registros(meses+" "+interes+" "+capital);
 				double i = ((interes/100) / 12);
 		        double cuota_mensual = capital / ((1-Math.pow((1+i),-meses))/i);
 			    // Montamos la tabla de HTML desde JAVA

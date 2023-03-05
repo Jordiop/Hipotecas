@@ -49,6 +49,7 @@ public class Calcular extends HttpServlet {
 				double i = ((interes/100) / 12);
 		        double cuota_mensual = capital / ((1-Math.pow((1+i),-meses))/i);
 			    resultat = "Su cuota mensual seria de: " + cuota_mensual + " euros";
+			    Registros.registros(meses+" "+interes+" "+capital);
 			}
 		} catch (Exception e) {
 			resultat = "Error ejecutando";

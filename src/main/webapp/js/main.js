@@ -31,7 +31,7 @@ function generarCalculo() {
         if (http.readyState == 4 && http.status == 200) {
             document.getElementById("print").innerHTML = http.responseText;
             if (sessionStorage.getItem("username") != null) {
-                document.getElementById("print").innerHTML += "<br><button onclick='guardarPrestamo()'>Guardar</button>";
+                document.getElementById("print").innerHTML += "<br><button class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onclick='guardarPrestamo()'>Guardar</button>";
             }
         }
     }
