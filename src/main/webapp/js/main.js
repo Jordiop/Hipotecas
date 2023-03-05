@@ -134,4 +134,16 @@ function cargarPrestamos() {
     http.send("username=" + sessionStorage.getItem("username"));
 }
 
+function cargarPresupuestoID(numero) {
+    let http = new XMLHttpRequest;
+    http.onreadystatechange = function() {
+        if (http.readyState == 4 && http.status == 200) {
+            document.getElementById("imprimirHipoteca").innerHTML = http.responseText;
+        }
+    }
+    http.open("POST", "CargarPrestamoID", true);
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    http.send("id=" + numero);
+}
+
 checkUser();
